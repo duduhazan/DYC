@@ -1,0 +1,75 @@
+.modal-visible {
+  display: block !important;
+}
+
+.modal-btn {
+  width: 150px;
+}
+
+.my-cards-header {
+  text-align: center;
+}
+
+.my-cards-gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.my-cards-card {
+  width: 300px !important;
+  height: 450px !important;
+}
+
+.flex-item {
+  display: block;
+  margin: 20px auto;
+}
+
+.my-cards-add-button {
+  margin-bottom: 2rem !important;
+}
+
+.my-cards-like {
+  cursor: pointer;
+  color: white;
+  margin-right: 5px;
+  font-size: 20px !important;
+}
+
+.my-cards-like:hover {
+  color: red;
+}
+
+.my-cards-edit {
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 20px !important;
+}
+
+.my-cards-edit:hover {
+  color: gray;
+}
+
+.my-cards-delete {
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 20px !important;
+}
+
+.my-cards-delete:hover {
+  color: gray;
+}
+
+.likedCard {
+  color: red !important;
+}
+
+.likedCard:hover {
+  color: white !important;
+}
+
+.cards-image {
+  height: 200px;
+}

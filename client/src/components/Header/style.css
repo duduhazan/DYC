@@ -1,0 +1,39 @@
+.navbar-container {
+    height: 60px;
+    color: white;
+}
+
+.navbar-container a {
+    cursor: pointer;
+}
+
+.navbar-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 10px;
+}
+
+.right-navbar {
+    display: flex;
+}
+.left-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item-1 {
+    margin-left: 15px;
+}
+
+.navbar-image {
+    max-height: 44px;
+}
+
+@media screen and (max-width: 517px) {
+  .navbar-image {
+    display: none;
+  }
+}

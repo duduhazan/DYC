@@ -1,0 +1,13 @@
+.card-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+}
+.card-form {
+    width: 500px;
+}
+
+.spinner-form {
+    margin-right: 5px;
+}

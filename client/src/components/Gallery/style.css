@@ -1,0 +1,25 @@
+.cards-group {
+  width: 100% !important;
+}
+
+.gallery-btn {
+  margin-left: 10px;
+}
+
+.gallery-like {
+  cursor: pointer;
+  color: white;
+}
+
+.gallery-like:hover {
+  color: red;
+}
+
+.gallery-card {
+  width: 33%;
+}
+
+.card {
+  max-width: 330px;
+  min-width: 250px;
+}

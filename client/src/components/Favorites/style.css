@@ -1,0 +1,62 @@
+.input-group {
+  width: 80% !important;
+  margin: auto;
+}
+
+.favorite-like {
+  cursor: pointer;
+  color: red !important;
+}
+
+.favorite-like:hover {
+  color: white !important;
+}
+
+.favorites-flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  display: block;
+  margin: 20px auto;
+}
+
+.favorites-container {
+  margin-top: 2rem !important;
+}
+
+.card-favorite {
+  width: 300px !important;
+  height: 450px !important;
+}
+
+.favorites-noCards {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-spinner-wrapper {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0ac1c;
+  transition: all 0.2s;
+  opacity: 0.7;
+}
+
+.page-spinner-border {
+  height: 100px !important;
+  width: 100px !important;
+}
