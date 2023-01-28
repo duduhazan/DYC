@@ -1,41 +1,20 @@
 import { useContext } from "react";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Api, serverUrl } from "../../api";
+import { serverUrl } from "../../api";
 import { ThemeContext } from "../../context";
+import { defaultCards } from "../../default-cards.js";
 import "./style.css";
 
 export const Card = () => {
   const navigate = useNavigate();
-  const [pageLoading, setPageLoading] = useState(false);
   const theme = useContext(ThemeContext);
-  const [homeCards, setHomeCards] = useState([]);
 
-  const setupCards = async () => {
-    setPageLoading(true);
-    const cards = await Api.getSampleCards();
-    let newCards = [];
-    for (let i = 0; i < 6; i++) {
-      newCards.push(cards[i]);
-    }
-    setHomeCards(newCards);
-    setPageLoading(false);
-  };
-
-  useEffect(() => {
-    setupCards();
-  }, []);
   return (
     <div className="album">
-      {!!pageLoading && (
-        <div className="page-spinner-wrapper">
-          <div className="page-spinner-border spinner-border" role="status" />
-        </div>
-      )}
       <div className="container">
         <div className="row">
           <div className="home-cards-flexbox">
-            {homeCards.map((card) => (
+            {defaultCards.map((card) => (
               <div
                 className="flex-item-cardExample"
                 key={`home_card_${card._id}`}

@@ -1,0 +1,52 @@
+export const defaultCards = [
+  {
+    address: "Ahuza 130 Ra'anana",
+    description: "This is my site!",
+    imageUrl: "images/DYC - design your cards_logo.png",
+    name: "DYC - design your cards",
+    phone: "0568943423",
+    type: "website, business improvement",
+  },
+  {
+    address: "zabotinski 32 Tel-Aviv",
+    description: "fast & good delivery",
+    imageUrl: "images/Wolt_wolt-logo.png",
+    name: "Wolt",
+    phone: "0582329988",
+    type: "delivery, fast food",
+    userId: "63b44279beafa06dcb6155be",
+  },
+  {
+    address: "zabotinski 32, Tel Aviv",
+    description: "this is macdonalds!",
+    imageUrl: "images/macdonald's_macdonalds.jpeg",
+    name: "macdonald's",
+    phone: "0589231457",
+    type: "fast food, burgers",
+  },
+  {
+    address: "ben gurion 24 Tel Aviv",
+    description:
+      "Anis Barber shop offers traditional barber services alongside skin fades, face mask and steam, eyebrow threading and much more!",
+    imageUrl: "images/Anis - barber shop_barber-shop.jpeg",
+    name: "Anis - barber shop",
+    phone: "0549238787",
+    type: "hair & lifestyle",
+  },
+  {
+    address: "ahuza 190 Ra'anana",
+    description: "This is Zara",
+    imageUrl: "images/Zara_zara.jpeg",
+    name: "Zara",
+    phone: "0509897755",
+    type: "fashion & lifestyle",
+  },
+  {
+    address: "hamleaha 2 Ra'anana",
+    description: "This is Holmes Place",
+    imageUrl: "images/Holmes Place_Gym-weights.webp",
+    name: "Holmes Place",
+    phone: "0509354755",
+    type: "health & lifestyle",
+  },
+];
