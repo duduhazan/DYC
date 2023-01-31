@@ -1,18 +1,24 @@
 .about-container {
-    text-align: center;
-    margin: 30px;
-    padding-bottom: 20px;
+  text-align: center;
+  margin: 30px;
 }
 
 .about-content {
-    height: fit-content;
-    display: flex;
-    justify-content: space-between;
-    text-align:left;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
 }
 
 .about-description {
-    margin-left: 10px;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+  padding: 10px;
+  padding-left: 14px;
+  padding-right: 20px;
+}
+
+.flex-item-cardAbout {
+  transform-style: preserve-3d;
 }
 
 .cardAbout-card {
@@ -21,6 +27,18 @@
 }
 
 .about-card-image {
-    height: 200px;
+  height: 200px;
 }
 
+@media (max-width: 600px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-description {
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+    padding: 10px;
+    padding-left: 14px;
+    padding-right: 20px;
+  }
+}

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Api, serverUrl } from "../../api";
 import { ThemeContext } from "../../context";
@@ -8,8 +7,8 @@ import "./style.css";
 
 export const Favorites = (props) => {
   const [loading, setLoading] = useState(false);
+  const [rotatedCard, setRotatedCard] = useState();
   const [pageLoading, setPageLoading] = useState(false);
-  const navigate = useNavigate();
   const theme = useContext(ThemeContext);
   const [cards, setCards] = useState([]);
   const inputRef = useRef();
@@ -126,14 +125,21 @@ export const Favorites = (props) => {
           <div className="favorites-flexbox">
             {cards[0] != 1 &&
               cards.map((card) => (
-                <div className="flex-item" key={`favorite_card_${card._id}`}>
-                  <div className="card card-favorite">
+                <section
+                  className={`flex-item ${
+                    rotatedCard == card ? "flippable-card" : ""
+                  } ${rotatedCard == card._id ? "finish-rotate" : ""}`}
+                  key={`favorite_card_${card._id}`}
+                >
+                  <div
+                    className={`card card-favorite card-front-side card-background-${theme}`}
+                  >
                     <img
                       className="card-img-top cards-image"
                       src={`${serverUrl}/${card.imageUrl}`}
-                      onClick={() => navigate(`/card-info/${card._id}`)}
+                      onClick={() => setRotatedCard(card)}
                     />
-                    <div className={`card-body card-background-${theme}`}>
+                    <div className={`card-body`}>
                       <h4 className="card-title">{card.name}</h4>
                       <p>{card.type}</p>
                       <p>{card.phone}</p>
@@ -159,7 +165,15 @@ export const Favorites = (props) => {
                       )}
                     </div>
                   </div>
-                </div>
+                  <div
+                    className={`card my-cards-card card-background-${theme} card-back-side`}
+                    onClick={() => setRotatedCard(card._id)}
+                  >
+                    <div className="card-back-side-description">
+                      <p>{card.description}</p>
+                    </div>
+                  </div>
+                </section>
               ))}
           </div>
         </div>

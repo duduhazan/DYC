@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Api, serverUrl } from "../../api";
 import { ThemeContext } from "../../context";
@@ -8,12 +7,12 @@ import { CardForm } from "./CardForm";
 import "./style.css";
 
 export const Cards = (props) => {
-  const navigate = useNavigate();
   const [pageLoading, setPageLoading] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [cards, setCards] = useState([]);
+  const [rotatedCard, setRotatedCard] = useState();
   const theme = useContext(ThemeContext);
 
   const setupCards = async () => {
@@ -36,6 +35,7 @@ export const Cards = (props) => {
 
   const onClose = (e) => {
     e && e.preventDefault();
+    setIsEdit(false);
     setIsFormOpen(false);
   };
 
@@ -114,6 +114,7 @@ export const Cards = (props) => {
                   setupCards={setupCards}
                   onClose={onClose}
                   isEdit={isEdit}
+                  setIsEdit={setIsEdit}
                   card={selectedCard}
                 />
               </div>
@@ -127,52 +128,66 @@ export const Cards = (props) => {
           <div className="my-cards-gallery">
             {cards.map((card) => (
               <div className="flex-item" key={`gallery_card_${card._id}`}>
-                <div className="card my-cards-card">
-                  <img
-                    className="card-img-top cards-image"
-                    src={`${serverUrl}/${card.imageUrl}`}
-                    onClick={() => navigate(`/card-info/${card._id}`)}
-                  />
-                  <div className={`card-body card-background-${theme}`}>
-                    <h4 className="card-title">{card.name}</h4>
-                    <p>{card.type}</p>
-                    <p>{card.phone}</p>
-                    <p>{card.address}</p>
-                    <div className="flex">
-                      {!!props.cardLikes?.length && (
+                <section
+                  className={`card my-cards-card card-background-${theme} ${
+                    rotatedCard == card ? "flippable-card" : ""
+                  } ${rotatedCard == card._id ? "finish-rotate" : ""}`}
+                >
+                  <div className="card-front-side">
+                    <img
+                      className="card-img-top cards-image"
+                      src={`${serverUrl}/${card.imageUrl}`}
+                      onClick={() => setRotatedCard(card)}
+                    />
+                    <div className={`card-body`}>
+                      <h4 className="card-title">{card.name}</h4>
+                      <p>{card.type}</p>
+                      <p>{card.phone}</p>
+                      <p>{card.address}</p>
+                      <div className="flex">
+                        {!!props.cardLikes?.length && (
+                          <i
+                            className={`fa fa-heart my-cards-like ${
+                              props.cardLikes.indexOf(card._id) !== -1 &&
+                              "likedCard"
+                            }`}
+                            onClick={(e) => {
+                              likeCard(e, { card });
+                            }}
+                          ></i>
+                        )}
+                        {!props.cardLikes?.length && (
+                          <i
+                            className={`fa fa-heart my-cards-like`}
+                            onClick={(e) => {
+                              likeCard(e, { card });
+                            }}
+                          ></i>
+                        )}
                         <i
-                          className={`fa fa-heart my-cards-like ${
-                            props.cardLikes.indexOf(card._id) !== -1 &&
-                            "likedCard"
-                          }`}
+                          className="fa fa-edit my-cards-edit"
                           onClick={(e) => {
-                            likeCard(e, { card });
+                            editCard(e, { card });
                           }}
                         ></i>
-                      )}
-                      {!props.cardLikes?.length && (
                         <i
-                          className={`fa fa-heart my-cards-like`}
+                          className="fa fa-trash my-cards-delete"
                           onClick={(e) => {
-                            likeCard(e, { card });
+                            deleteCard(e, { card });
                           }}
                         ></i>
-                      )}
-                      <i
-                        className="fa fa-edit my-cards-edit"
-                        onClick={(e) => {
-                          editCard(e, { card });
-                        }}
-                      ></i>
-                      <i
-                        className="fa fa-trash my-cards-delete"
-                        onClick={(e) => {
-                          deleteCard(e, { card });
-                        }}
-                      ></i>
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <div
+                    className={`card my-cards-card card-background-${theme} card-back-side`}
+                    onClick={() => setRotatedCard(card._id)}
+                  >
+                    <div className="card-back-side-description">
+                      <p>{card.description}</p>
+                    </div>
+                  </div>
+                </section>
               </div>
             ))}
           </div>

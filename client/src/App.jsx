@@ -8,7 +8,6 @@ import { Business } from "./components/Business";
 import { About } from "./components/About";
 import { Footer } from "./components/footer";
 import { Favorites } from "./components/Favorites";
-import { CardInfo } from "./components/Card/CardInfo";
 import { Cards } from "./components/Cards";
 import { useState } from "react";
 import { Gallery } from "./components/Gallery";
@@ -55,7 +54,6 @@ function App() {
               <Favorites cardLikes={user?.cardLikes} onUserUpdate={setUser} />
             }
           />
-          <Route path="card-info/:id" element={<CardInfo />} />
           <Route path="card" element={<Card />} />
           <Route
             path="my-cards"

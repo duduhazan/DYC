@@ -46,3 +46,40 @@
   flex-wrap: wrap;
   text-align: center;
 }
+
+.card-front-side {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  transition: 2s;
+  backface-visibility: hidden;
+}
+
+.card-back-side {
+  padding: 20px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.flippable-card {
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  transition: 2s;
+}
+
+.finish-rotate {
+  transform-style: preserve-3d;
+  transform: rotateY(360deg);
+  transition: 2s;
+}
+
+.card-back-side-description {
+  text-align: center;
+}

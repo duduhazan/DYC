@@ -9,7 +9,6 @@ import { UserRouter } from "./routes/user.route";
 import { authMiddleWare } from "./middlewares/auth.middleware";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import { SampleCards } from "./routes/sampleCards.route";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -36,8 +35,6 @@ async function startServer() {
   app.use(loginRouter());
 
   app.use(RegisterRouter());
-
-  app.use(SampleCards());
 
   app.use(authMiddleWare);
 

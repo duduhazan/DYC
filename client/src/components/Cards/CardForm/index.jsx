@@ -29,7 +29,7 @@ export const CardForm = (props) => {
     address.current.value = card.address;
     phone.current.value = card.phone;
     description.current.value = card.description;
-  }, []);
+  }, [props.isEdit]);
 
   const addOrEditCard = async (event) => {
     event.preventDefault();
@@ -64,6 +64,7 @@ export const CardForm = (props) => {
         type: "error",
       });
     }
+    props.setIsEdit(false);
     setLoading(false);
   };
 
