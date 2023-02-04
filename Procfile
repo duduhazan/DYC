@@ -1,1 +1,1 @@
-web: cd server && npm start
+web: cd server && node --experimental-specifier-resolution=node main.js
