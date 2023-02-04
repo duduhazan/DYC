@@ -30,6 +30,8 @@ async function startServer() {
 
   app.use(express.json());
 
+  app.use("/", (req, res) => res.send("<h1>DYC Server</h1>"));
+
   app.use("/images", express.static(join(__dirname, "images")));
 
   app.use(loginRouter());
