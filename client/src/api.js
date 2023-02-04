@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const serverUrl = await import.meta.env.VITE_SERVER_URL;
+export const serverUrl = import.meta.env.VITE_SERVER_URL;
 console.log("using server url", serverUrl);
 const client = axios.create({ baseURL: serverUrl, withCredentials: true });
 client.interceptors.response.use((res) => {
