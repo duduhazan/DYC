@@ -9,6 +9,7 @@ import { UserRouter } from "./routes/user.route";
 import { authMiddleWare } from "./middlewares/auth.middleware";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { AliveRouter } from "./routes/alive.route";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -29,6 +30,8 @@ async function startServer() {
   app.use(cookieParser());
 
   app.use(express.json());
+
+  app.use(AliveRouter());
 
   app.use("/images", express.static(join(__dirname, "images")));
 
