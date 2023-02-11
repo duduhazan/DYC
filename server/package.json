@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node --experimental-specifier-resolution=node main.js",
-    "dev": "CLIENT_URL=http://localhost:5173 DB_URL=mongodb://localhost:27017/DYC_DataBase node --experimental-specifier-resolution=node main.js"
+    "dev": "PORT=3500 CLIENT_URL=http://localhost:5173 DB_URL=mongodb://localhost:27017/DYC_DataBase node --experimental-specifier-resolution=node main.js"
   },
   "author": "",
   "license": "ISC",

@@ -16,7 +16,7 @@ const __dirname = dirname(__filename);
 async function startServer() {
   await connectDB(process.env.DB_URL);
 
-  const port = 3500;
+  const port = process.env.PORT;
   const app = express();
 
   app.use(
