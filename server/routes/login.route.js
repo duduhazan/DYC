@@ -5,9 +5,7 @@ import { validateLoginUser } from "../validators/user.validator";
 import userModel from "../schemas/users.schema";
 import { compareSync } from "bcrypt";
 
-const secret = "Asdfkajdf023i";
-
-export const loginRouter = () => {
+export const loginRouter = (secret) => {
   const router = Router();
 
   router.post("/auth", async (req, res) => {

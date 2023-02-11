@@ -1,9 +1,7 @@
 import * as jsonWebtoken from "jsonwebtoken";
 import { StatusCode } from "status-code-enum";
 
-const secret = "Asdfkajdf023i";
-
-export const authMiddleWare = (req, res, next) => {
+export const authMiddleWare = (secret) => (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
     return res.status(StatusCode.ClientErrorUnauthorized).send("unauthorized");

@@ -18,6 +18,7 @@ async function startServer() {
   await connectDB(process.env.DB_URL);
 
   const port = process.env.PORT;
+  const secret = process.env.AUTH_SECRET;
   const app = express();
 
   app.use(
@@ -35,11 +36,11 @@ async function startServer() {
 
   app.use("/images", express.static(join(__dirname, "images")));
 
-  app.use(loginRouter());
+  app.use(loginRouter(secret));
 
   app.use(RegisterRouter());
 
-  app.use(authMiddleWare);
+  app.use(authMiddleWare(secret));
 
   app.use(UserRouter());
 
