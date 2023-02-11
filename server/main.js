@@ -45,7 +45,7 @@ async function startServer() {
 
   app.use(cardsRouter());
 
-  app.listen(3500, () => {
+  app.listen(port, () => {
     console.log(`started server on port ${port}`);
   });
 }
