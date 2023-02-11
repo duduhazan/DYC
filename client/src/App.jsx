@@ -6,7 +6,7 @@ import { Home } from "./components/Home";
 import { Header } from "./components/Header";
 import { Business } from "./components/Business";
 import { About } from "./components/About";
-import { Footer } from "./components/footer";
+import { Footer } from "./components/Footer";
 import { Favorites } from "./components/Favorites";
 import { Cards } from "./components/Cards";
 import { useState } from "react";
