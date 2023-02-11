@@ -48,7 +48,7 @@ export const Footer = (props) => {
           )}
         </p>
 
-        <p className="footer-company-name">© 2022 Dudu Hazan</p>
+        <p className="footer-company-name">{`© ${new Date().getFullYear()} Dudu Hazan`}</p>
       </div>
 
       <div className="footer-center">
