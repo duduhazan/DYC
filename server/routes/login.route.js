@@ -36,7 +36,8 @@ export const loginRouter = (secret) => {
 
       const token = jsonWebtoken.default.sign(
         { email: user.email, name: user.name, id: user.id },
-        secret
+        secret,
+        { expiresIn: "1d" }
       );
       res
         .cookie("token", token, {

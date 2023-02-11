@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Server",
+      "name": "Server",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}/server",
