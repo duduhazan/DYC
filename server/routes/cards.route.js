@@ -29,7 +29,7 @@ export const cardsRouter = () => {
         cards = await cardModel.find();
       }
 
-      if (!cards?.length) {
+      if (cardIds?.length && !cards?.length) {
         return res
           .status(StatusCode.ClientErrorNotFound)
           .send("card not found in database");
