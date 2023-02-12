@@ -8,6 +8,11 @@ export const Card = () => {
   const [rotatedCard, setRotatedCard] = useState();
   const theme = useContext(ThemeContext);
 
+  const finishRotateCard = (cardId) => {
+    setRotatedCard(cardId);
+    setTimeout(() => setRotatedCard(), 2000);
+  }
+
   return (
     <div className="album">
       <div className="container">
@@ -39,7 +44,7 @@ export const Card = () => {
                   </div>
                   <div
                     className={`card cardExample-card card-background-${theme} card-back-side`}
-                    onClick={() => setRotatedCard(card._id)}
+                    onClick={() => finishRotateCard(card._id)}
                   >
                     <div className="card-back-side-description">
                       <p>{card.description}</p>
