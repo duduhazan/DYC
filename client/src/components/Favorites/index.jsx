@@ -136,7 +136,7 @@ export const Favorites = (props) => {
                   >
                     <img
                       className="card-img-top cards-image"
-                      src={`${serverUrl}/${card.imageUrl}`}
+                      src={card.imageUrl}
                       onClick={() => setRotatedCard(card)}
                     />
                     <div className={`card-body`}>

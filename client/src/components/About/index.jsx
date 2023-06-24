@@ -64,14 +64,14 @@ export const About = () => {
               <div
                 className={`card cardAbout-card card-front-side card-background-${theme}`}
               >
-                {
+                {!!card?.imageUrl && (
                   <img
                     className="card-img-top about-card-image"
                     src={`${serverUrl}/${card.imageUrl}`}
                     alt="Card image cap"
                     onClick={() => setRotatedCard(card)}
                   />
-                }
+                )}
                 <div className={`card-body`}>
                   <h4 className="card-text">{card.name}</h4>
                   <p>{card.type}</p>

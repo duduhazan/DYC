@@ -137,7 +137,7 @@ export const Gallery = (props) => {
                               <div className="card-front-side gallery-card-side">
                                 <img
                                   className="card-img-top cards-image "
-                                  src={`${serverUrl}/${card.imageUrl}`}
+                                  src={card.imageUrl}
                                   onClick={() => setRotatedCard(card)}
                                 />
                                 <div className={`card-body`}>

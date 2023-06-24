@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
   },
 });
 
-export const cardsRouter = () => {
+export const cardsRouter = (imageStorageService) => {
   const router = Router();
   const upload = multer({ storage });
 
@@ -35,6 +35,17 @@ export const cardsRouter = () => {
           .send("card not found in database");
       }
 
+      const cardsImages = {};
+      await Promise.all(
+        cards.map(async (c) => {
+          const imageUrl = await imageStorageService.getUrl(c.imageUrl);
+          cardsImages[c._id] = imageUrl;
+        })
+      );
+      for (const card of cards) {
+        card.imageUrl = cardsImages[card._id];
+      }
+
       res.json(cards);
     } catch (error) {
       console.error(error);
@@ -53,6 +64,10 @@ export const cardsRouter = () => {
           .status(StatusCode.ClientErrorNotFound)
           .send("card wasn't found in database");
       }
+
+      const imageUrl = await imageStorageService.getUrl(card.imageUrl);
+      card.imageUrl = imageUrl;
+
       res.json(card);
     } catch (error) {
       console.error(error);
@@ -69,9 +84,13 @@ export const cardsRouter = () => {
           .status(StatusCode.ClientErrorBadRequest)
           .send(result.error.message);
       }
+
+      const localImagePath = `images/${req.body.name}_${req.body.imageName}`;
+      const imageName = await imageStorageService.upload(localImagePath);
+
       const newCard = {
         ...req.body,
-        imageUrl: `images/${req.body.name}_${req.body.imageName}`,
+        imageUrl: imageName,
         userId: req.user.id,
       };
       const card = await new cardModel(newCard).save();
@@ -113,6 +132,7 @@ export const cardsRouter = () => {
           .status(StatusCode.ClientErrorBadRequest)
           .json("card not exist!");
       }
+      await imageStorageService.delete(card.imageUrl);
       const users = await userModel.find({ cardLikes: cardId });
       const userIds = users.map((u) => u._id);
       await userModel.updateMany(

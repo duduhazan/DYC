@@ -10,6 +10,8 @@ import { authMiddleWare } from "./middlewares/auth.middleware";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { AliveRouter } from "./routes/alive.route";
+import { ImageStorageService } from "./image-storage.service";
+import { writeFile } from "fs/promises";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,6 +21,11 @@ async function startServer() {
 
   const port = process.env.PORT;
   const secret = process.env.AUTH_SECRET;
+  const keyJson = process.env.KEY_JSON;
+  if (keyJson) {
+    await writeFile("./key.json", process.env.KEY_JSON);
+  }
+  const imageStorageService = new ImageStorageService("./key.json", "dyc");
   const app = express();
 
   app.use(
@@ -44,7 +51,7 @@ async function startServer() {
 
   app.use(UserRouter());
 
-  app.use(cardsRouter());
+  app.use(cardsRouter(imageStorageService));
 
   app.listen(port, () => {
     console.log(`started server on port ${port}`);
