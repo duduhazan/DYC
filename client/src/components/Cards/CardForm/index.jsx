@@ -39,6 +39,13 @@ export const CardForm = (props) => {
       return;
     }
 
+    if (description.current.value?.length > 255) {
+      toast("Description need to be less than 255 characters", {
+        type: "error",
+      });
+      return;
+    }
+
     const formData = new FormData();
     formData.append("name", name.current.value);
     formData.append("type", type.current.value);
