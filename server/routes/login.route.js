@@ -42,7 +42,7 @@ export const loginRouter = (secret) => {
       res
         .cookie("token", token, {
           secure: true,
-          sameSite: "lax",
+          sameSite: "none",
           httpOnly: true,
           expires: new Date(Date.now() + 60 * 24 * 3600000),
           maxAge: 86400000,
