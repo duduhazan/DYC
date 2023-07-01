@@ -42,7 +42,7 @@ export const loginRouter = (secret) => {
       res
         .cookie("token", token, {
           secure: true,
-          sameSite: "none",
+          sameSite: "lax",
           httpOnly: true,
           maxAge: 86400000,
         })
