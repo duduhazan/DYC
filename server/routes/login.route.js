@@ -44,7 +44,7 @@ export const loginRouter = (secret) => {
           secure: true,
           sameSite: "none",
           httpOnly: true,
-          expires: "1w"
+          maxAge: 9999,
         })
         .json(user);
     } catch (error) {
