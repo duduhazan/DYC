@@ -16,6 +16,24 @@ export const cardsRouter = (imageStorageService) => {
   const router = Router();
   const upload = multer({ storage });
 
+  const uploadImage = (req, res) => {
+    console.log("STARTING IMAGE UPLOAD")
+    upload.single("image")(req, res, function (err) {
+      if (err) {
+        console.log(
+          "--- ERROR WHILE UPLOADING IMAGE ---",
+          `${req.body.name}_${req.body.imageName}`
+        );
+        console.error(err);
+        return;
+      }
+      console.log(
+        "successfuly uploaded image",
+        `${req.body.name}_${req.body.imageName}`
+      );
+    });
+  };
+
   router.get("/cards", async (req, res) => {
     try {
       const cardIds = req.query.ids;
@@ -75,7 +93,7 @@ export const cardsRouter = (imageStorageService) => {
     }
   });
 
-  router.post("/cards", upload.single("image"), async (req, res) => {
+  router.post("/cards", uploadImage, async (req, res) => {
     try {
       const result = validateCard(req.body);
 
