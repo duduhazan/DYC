@@ -44,6 +44,7 @@ export const loginRouter = (secret) => {
           secure: true,
           sameSite: "lax",
           httpOnly: true,
+          path: ""
         })
         .json(user);
     } catch (error) {
