@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { Api, serverUrl } from "../../api";
+import { Api } from "../../api";
 import { ThemeContext } from "../../context";
 import "./style.css";
 
